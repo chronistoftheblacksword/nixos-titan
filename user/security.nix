@@ -2,11 +2,8 @@
 {
 
   home.packages = with pkgs; [
- 
-    telegram-desktop
-    signal-desktop
-    altus
-    beeper
+
+    bitwarden-desktop
 
   ];
 
