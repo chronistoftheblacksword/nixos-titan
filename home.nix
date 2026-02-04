@@ -7,6 +7,9 @@
      ./user/messenger.nix
      ./user/cli-tools.nix
      ./user/security.nix
+     ./user/media.nix
+     ./user/internet.nix
+     ./user/media-creation.nix
 
   ];
 
