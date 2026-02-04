@@ -7,6 +7,7 @@
     signal-desktop
     altus
     beeper
+    discord
 
   ];
 
