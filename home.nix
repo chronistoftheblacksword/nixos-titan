@@ -1,6 +1,15 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
+  imports = [
+
+#    ./user/gaming.nix
+     ./user/messenger.nix
+
+  ];
+
+
+
   # TODO please change the username & home directory to your own
   home.username = "basti";
   home.homeDirectory = "/home/basti";
@@ -125,7 +134,7 @@
       env.TERM = "xterm-256color";
       font = {
         size = 12;
-        draw_bold_text_with_bright_colors = true;
+        #draw_bold_text_with_bright_colors = true;
       };
       scrolling.multiplier = 5;
       selection.save_to_clipboard = true;
@@ -148,6 +157,16 @@
     };
   };
 
+
+  #nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "steam" "steam-unwrapped" ];
+  #programs.steam = {
+  #  enable = true;
+  #  gamescopeSession.enable = true; # For Steam Deck-like experience
+  #  remotePlay.openFirewall = true;
+  #  dedicatedServer.openFirewall = true;
+  #  localNetworkGameTransfers.openFirewall = true;
+  #  };
+
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
@@ -157,4 +176,5 @@
   # the home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "25.11";
+
 }

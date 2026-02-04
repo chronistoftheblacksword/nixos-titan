@@ -13,6 +13,7 @@
       ./hardware-configuration.nix
       ./modules/nvidia.nix
       ./modules/git.nix
+      ./modules/gaming.nix
 #      (import "${home-manager}/nixos")
     ];
 
