@@ -113,7 +113,7 @@
   environment.systemPackages = with pkgs; [
    neovim
    wget
-   #git
+   gparted
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
