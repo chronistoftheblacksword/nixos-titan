@@ -17,7 +17,7 @@
 #      (import "${home-manager}/nixos")
 #      ./modules/hyprland.nix
       ./modules/awesomewm.nix
-      
+      ./modules/zsh.nix      
     ];
 
   # Bootloader.
