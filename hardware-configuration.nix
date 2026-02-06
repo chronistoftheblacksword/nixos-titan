@@ -31,13 +31,13 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  #boot.supportedFilesystems = [ "ntfs" ];
+  boot.supportedFilesystems = [ "ntfs" ];
   # User mounted Disks
-  #fileSystems."/run/media/basti/Daten" = {
-  #device = "/dev/disk/by-uuid/A232D50232D4DC7B";
-  #fsType = "ntfsi-3g";
-  #options = [ "rw" "uid=1000" ];
+  fileSystems."/home/basti/daten" = {
+  device = "/dev/disk/by-uuid/A232D50232D4DC7B";
+  fsType = "ntfs";
+  options = [ "rw" "uid=1000" "gid=100" ];
   
-  #};
+  };
 
 }

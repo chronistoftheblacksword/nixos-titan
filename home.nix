@@ -10,8 +10,7 @@
      ./user/media.nix
      ./user/internet.nix
      ./user/media-creation.nix
-#     ./user/awesomewm.nix
-#     ./user/hyprland.nix
+     ./user/desktop-environment.nix
 
   ];
 

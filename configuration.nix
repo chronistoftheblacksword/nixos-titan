@@ -15,6 +15,9 @@
       ./modules/git.nix
       ./modules/gaming.nix
 #      (import "${home-manager}/nixos")
+#      ./modules/hyprland.nix
+      ./modules/awesomewm.nix
+      
     ];
 
   # Bootloader.
@@ -95,7 +98,7 @@
   users.users.basti = {
     isNormalUser = true;
     description = "basti";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" ];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird

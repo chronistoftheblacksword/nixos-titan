@@ -6,6 +6,9 @@
   vlc
   qimgv
   flameshot
+  spotify
+  mpd
+  ncmpc
 
   ];
 
