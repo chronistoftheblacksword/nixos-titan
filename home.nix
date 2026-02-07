@@ -73,6 +73,10 @@
     enable = true;
     # custom settings
     settings = {
+      terminal.shell = {
+        program = "${pkgs.zsh}/bin/zsh";
+        args = [ "--login" ];
+      };
       env.TERM = "xterm-256color";
       font = {
         size = 12;

@@ -25,7 +25,7 @@
     rofi
     xrandr
     arandr
-    fish
+    #fish
 
   ];
 

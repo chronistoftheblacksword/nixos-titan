@@ -1,7 +1,11 @@
 { config, pkgs, lib, ...}: 
 {
 
- programs.zsh = {
+  environment.systemPackages = [
+    pkgs.spaceship-prompt
+  ];
+
+  programs.zsh = {
     enable = true;
     enableCompletion = true;
     autosuggestions.enable = true;
@@ -26,6 +30,9 @@
       ];
       theme = "robbyrussell";
     };
+    #spaceship-prompt = {
+    #  enable = true;
+    #};
 
   };
 

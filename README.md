@@ -7,3 +7,4 @@
 
 + ```nix-collect-garbage``` | ```systemctl start nix-gc.servic```
 + nix-env --delete-generations +N (keep last n generations)
++ sudo -i nix-channel --update && home-manager switch

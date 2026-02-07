@@ -57,7 +57,80 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  #services.xserver.enable = true;
+  services.xserver = {
+  enable = true;
+  #xrandrHeads = [
+  #  {
+  #    output = "DP-2";
+  #    primary = true;
+  #    monitorConfig = ''
+  #      ModeLine "5120x1440_240" -hsync +vsync
+  #      Option "PreferredMode" "5120x1440_240"
+  #    '';
+  #  }
+  #  ];
+  };
+  services.xserver.displayManager.sessionCommands = ''
+  ${pkgs.xorg.xrdb}/bin/xrdb -merge < ${pkgs.writeText "Xresources" ''
+    Xcursor.theme: Adwaita
+    Xcursor.size: 64
+    Xft.dpi: 109
+    Xft.antialias: true
+    Xft.hinting: true
+    Xft.hintstyle: hintslight
+    Xft.rgba: rgb
+
+    URxvt.depth: 32
+    URxvt.geometry: 90x30
+    URxvt.loginShell: true
+    URxvt.internalBorder: 3
+    URxvt.lineSpace: 0
+    URxvt*shading: 15
+    URxvt*saveLines: 12000
+    URxvt*foreground: #dcdccc
+    URxvt*background: #1c1c1c
+    URxvt*font: xft:DejaVu Sans Mono:pixelsize=14
+    URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=14
+    URxvt*scrollBar: true
+    URxvt*scrollBar_right: true
+    URxvt*scrollstyle: plain
+ 
+    ! Define Solarized colors
+    #define S_base03 #002b36
+    #define S_base02 #073642
+    #define S_base01 #586e75
+    #define S_base00 #657b83
+    #define S_base0  #839496
+    #define S_base1  #93a1a1
+    #define S_base2  #eee8d5
+    #define S_base3  #fdf6e3
+    #define S_red    #dc322f
+    #define S_green  #859900
+    #define S_yellow #b58900
+    #define S_blue   #268bd2
+    #define S_magenta #d33682
+    #define S_cyan   #2aa198
+    
+    ! Apply to terminals
+    *color0: S_base02
+    *color8: S_base03
+    *color1: S_red
+    *color9: S_orange
+    *color2: S_green
+    *color10: S_base01
+    *color3: S_yellow
+    *color11: S_base00
+    *color4: S_blue
+    *color12: S_base0
+    *color5: S_magenta
+    *color13: S_violet
+    *color6: S_cyan
+    *color14: S_base1
+    *color7: S_base2
+    *color15: S_base3
+  ''}
+'';
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -96,11 +169,12 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.basti = {
+    #defaultUserShell = pkgs.zsh;
     isNormalUser = true;
     description = "basti";
     extraGroups = [ "networkmanager" "wheel" "input" ];
     packages = with pkgs; [
-      kdePackages.kate
+    #  kdePackages.kate
     #  thunderbird
     ];
   };
@@ -117,6 +191,7 @@
    neovim
    wget
    gparted
+   xorg.xorgserver
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -138,6 +213,28 @@
       PermitRootLogin = "no"; #disable root login
     };
   };
+
+  hardware.bluetooth = {
+  enable = true;
+  powerOnBoot = true;
+  settings = {
+    General = {
+      # Shows battery charge of connected devices on supported
+      # Bluetooth adapters. Defaults to 'false'.
+      Experimental = true;
+      # When enabled other devices can connect faster to us, however
+      # the tradeoff is increased power consumption. Defaults to
+      # 'false'.
+      FastConnectable = true;
+    };
+    Policy = {
+      # Enable all controllers when they are found. This includes
+      # adapters present on start as well as adapters that are plugged
+      # in later on. Defaults to 'true'.
+      AutoEnable = true;
+    };
+  };
+};
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

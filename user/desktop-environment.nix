@@ -10,8 +10,22 @@
 
   kdePackages.dolphin
   
-
   rofi
+  networkmanagerapplet
+  blueman
+  dunst
+  pavucontrol
+  volctl
+  picom
+  polkit
+  polkit_gnome
+  xss-lock
+  i3lock-color
+  sxhkd
+  clipit
+  flameshot
+  udisks
+  gvfs
 
   ];
 
